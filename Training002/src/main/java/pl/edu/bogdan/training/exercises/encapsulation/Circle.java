@@ -16,6 +16,16 @@ public class Circle {
 	 */
 	private double radius;
 	
+	public Circle(){}
+	
+	public Circle(double x, double y, double radius) throws NegativeRadiusException {
+		if(radius < 0)
+			throw new NegativeRadiusException("Promien nie moze byc ujemny");
+		this.x = x;
+		this.y = y;
+		this.radius = radius;
+	}
+
 	public double getX(){
 		return x;
 	}
