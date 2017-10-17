@@ -4,15 +4,42 @@ public class Circle {
 	/**
 	 * X-coordinate of center of the circle
 	 */
-	double x;
+	private double x;
 	
 	/**
 	 * Y-coordinate of center of the circle
 	 */
-	double y;
+	private double y;
 	
 	/**
 	 * Radius of the circle
 	 */
-	double radius;
+	private double radius;
+	
+	public double getX(){
+		return x;
+	}
+	
+	public void setX(double x){
+		this.x = x;
+	}
+
+	public double getY() {
+		return y;
+	}
+
+	public void setY(double y) {
+		this.y = y;
+	}
+
+	public double getRadius() {
+		return radius;
+	}
+
+	public void setRadius(double radius) throws NegativeRadiusException {
+		if(radius < 0)
+			throw new NegativeRadiusException("Promien nie moze byc ujemny");
+		this.radius = radius;
+	}
+	 
 }
