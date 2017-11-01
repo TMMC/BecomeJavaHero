@@ -8,8 +8,16 @@
   	<servlet-name>HelloWorldServlet</servlet-name>
   	<servlet-class>pl.edu.bogdan.training.mvc.servlets.HelloWorldServelt</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>FormAnalyzer</servlet-name>
+  	<servlet-class>pl.edu.bogdan.training.mvc.servlets.FormAnalyzer</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>HelloWorldServlet</servlet-name>
   	<url-pattern>/HelloWorldServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FormAnalyzer</servlet-name>
+  	<url-pattern>/FormAnalyzer</url-pattern>
   </servlet-mapping>
 </web-app>
