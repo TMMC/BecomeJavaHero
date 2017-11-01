@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<bean id="reportGenerator1" class="pl.edu.bogdan.training.di.xml.ReportGenerator">
+		<property name="formatter">
+			<bean id="formatter1" class="pl.edu.bogdan.training.di.xml.CsvReportFormatter"/>
+		</property>
+		<property name="name" value="generator1"/>
+	</bean>
+	
+	<bean id="formatter2" class="pl.edu.bogdan.training.di.xml.XmlReportFormatter"/>
+	
+	<bean id="reportGenerator2" class="pl.edu.bogdan.training.di.xml.ReportGenerator">
+		<property name="formatter" ref="formatter2"/>
+		<property name="name" value="generator2"/>
+	</bean>
+	
+	<bean id="formatter3" class="pl.edu.bogdan.training.di.xml.CsvReportFormatter"/>
+	
+	<bean id="reportGenerator3" class="pl.edu.bogdan.training.di.xml.ReportGenerator">
+		<constructor-arg name="formatter" ref="formatter3"/>
+		<constructor-arg name="name" value="generator3"/>
+	</bean>
+	
+</beans>

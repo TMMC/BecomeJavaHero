@@ -2,7 +2,6 @@ package pl.edu.bogdan.training.solid.exercise6;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Test {
 	public static void main(String [] args) {
