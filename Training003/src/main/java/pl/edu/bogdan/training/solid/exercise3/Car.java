@@ -8,17 +8,28 @@ interface Case {
 	
 }
 
-public interface Car {
+interface LuggageCarrier {
+	void addCase(Case suitcase);
+	void removeCase();
+}
+
+interface PassangerCarrier {
+	void addCase(Case suitcase);
+	void removeCase();
+}
+
+interface Driveable {
+	void addDriver(Person person);
+	void removeDriver();
+}
+
+public interface Car extends LuggageCarrier, PassangerCarrier, Driveable {
 	void startEngine();
 	void stopEngine();
 	void addFuel(int liters);
 	void useFuel(int liters);
 	void replaceOil();
 	void blowWheels();
-	void addDriver(Person person);
-	void removeDriver();
-	void addPassanger(Person person);
-	void removePassanger();
-	void addCase(Case suitcase);
-	void removeCase();
+	
+	
 }
