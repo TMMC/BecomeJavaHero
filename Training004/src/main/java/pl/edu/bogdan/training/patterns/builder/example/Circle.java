@@ -39,4 +39,12 @@ public class Circle {
 			return new Circle(this);
 		}
 	}
+	
+	public static void main(String [] args) {
+		Circle.Builder builder = new Circle.Builder();
+		Circle circle = builder.x(3).y(4).radius(5).build();
+		String s = "pawel";
+		s.substring(3).toUpperCase().charAt(2);
+	}
+	
 }

@@ -1,7 +1,11 @@
 package pl.edu.bogdan.training.patterns.abstractfactory;
 
-public class Circle implements Figure {
+class Circle implements Figure {
 
+	public Circle(double radius) {
+		
+	}
+	
 	@Override
 	public double getArea() {
 		return 0;

@@ -1,5 +1,7 @@
 package pl.edu.bogdan.training.patterns.abstractfactory;
 
+interface Shape {};
+
 public interface FigureFactory {
-	Figure createFigure();
+	Figure createFigure(Shape shape);
 }

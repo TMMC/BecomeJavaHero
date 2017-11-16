@@ -24,6 +24,7 @@ public class Test {
 				}
 			}
 		});
+		
 		new Thread(eventSource).start();
 	}
 }

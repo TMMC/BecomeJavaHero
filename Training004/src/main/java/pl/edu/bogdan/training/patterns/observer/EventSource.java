@@ -19,3 +19,10 @@ public class EventSource extends Observable implements Runnable {
 		}
 	}
 }
+
+
+class TestThread extends Thread {
+	public void run() {
+		
+	}
+}

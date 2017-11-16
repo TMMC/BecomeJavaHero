@@ -9,3 +9,16 @@ public abstract class Computer {
 	
 	abstract protected IProcessor createProcessor();
 }
+
+class Laptop extends Computer {
+	
+	public Laptop(IMemory memory) {
+		super();
+	}
+	
+	@Override
+	protected IProcessor createProcessor() {
+		return null;
+	}
+	
+}
