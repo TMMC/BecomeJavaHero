@@ -10,9 +10,19 @@
   	<servlet-class>pl.bogdan.HelloWorldServelt</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>form</servlet-name>
+  	<servlet-class>pl.bogdan.FormReceiver</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
   	<servlet-name>HelloWorldServelt</servlet-name>
   	<url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>form</servlet-name>
+  	<url-pattern>/form</url-pattern>
   </servlet-mapping>
   
 </web-app>
