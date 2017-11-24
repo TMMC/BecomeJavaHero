@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class App2 {
 
 	public static void main(String[] args) {
-		String url = "jdbc:sqlite:../Wiki/Databases/derby_test_1;create=true";
+		String url = "jdbc:derby:../Wiki/Databases/derby_test_1;create=true";
 		try (Connection conn = DriverManager.getConnection(url);
 			Statement stmt = conn.createStatement()) {
 			
