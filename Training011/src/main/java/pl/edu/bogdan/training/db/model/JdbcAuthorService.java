@@ -7,15 +7,27 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import pl.edu.bogdan.training.db.Database;
+
+@Service
 public class JdbcAuthorService implements IAuthorService {
 
+	private Database database;
 	
-	private Connection connection;
+	@Autowired
+	public void setDatabase(Database database) {
+		this.database = database;
+	}
+	
 	
 	@Override
 	public List<Author> getAllAuthors() {
 		List<Author> result = new ArrayList<>();
-		try (Statement stmt = connection.createStatement();
+		try (Connection connection = database.createConnection();
+			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM autorzy")) {
 			while (rs.next()) {
 				result.add(new Author(
