@@ -10,5 +10,8 @@ public class App {
     	
     	ReportGenerator generator1 = (ReportGenerator) context.getBean("reportGenerator1");
     	generator1.format();
+    	
+    	ReportGenerator generator2 = (ReportGenerator) context.getBean("reportGenerator2");
+    	generator2.format();
     }
 }

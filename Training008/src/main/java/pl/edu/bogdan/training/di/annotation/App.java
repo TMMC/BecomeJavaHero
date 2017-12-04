@@ -8,6 +8,10 @@ public class App {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring-configuration.xml");
         BeanFactory factory = context;
+        
+        IReportFormatter formatter = factory.getBean(IReportFormatter.class);
+        formatter.format();
+        
         ReportGenerator generator = factory.getBean(ReportGenerator.class);
         generator.format();
 	}

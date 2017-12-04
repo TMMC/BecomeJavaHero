@@ -1,5 +1,7 @@
 package pl.edu.bogdan.training.di.mixed;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class ReportGenerator {
 	private String name;
@@ -28,7 +30,8 @@ public class ReportGenerator {
 		return formatter;
 	}
 
-	public void setFormatter(IReportFormatter formatter) {
+	@Autowired
+	public void setFormatter(@Qualifier(value="formatter1") IReportFormatter formatter) {
 		System.out.println("Formatter setter in Generator");
 		this.formatter = formatter;
 	}

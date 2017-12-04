@@ -4,7 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	
-	<bean id="reportGenerator1" class="pl.edu.bogdan.training.di.xml.ReportGenerator">
+	<bean id="reportGenerator1" 
+	class="pl.edu.bogdan.training.di.xml.ReportGenerator">
 		<property name="formatter">
 			<bean id="formatter1" class="pl.edu.bogdan.training.di.xml.CsvReportFormatter"/>
 		</property>

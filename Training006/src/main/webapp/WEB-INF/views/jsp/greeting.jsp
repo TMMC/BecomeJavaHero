@@ -1,8 +1,5 @@
 <html>
 <body>
-	<h2>Hello, ${name}</h2>
-	<% for (int i = 1; i <= 10; i++) {  %>
-	<%= i %>
-	<% } %>
+	<h2>Hello, ${name.charAt(0)}</h2>
 </body>
 </html>
