@@ -1,9 +1,13 @@
 package pl.edu.bogdan.training.db.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Role {
@@ -11,6 +15,8 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
+	@OneToMany(targetEntity = User.class, mappedBy="role", fetch=FetchType.LAZY)
+	private List<User> users;
 	public int getId() {
 		return id;
 	}
@@ -30,4 +36,11 @@ public class Role {
 	public Role() {
 		
 	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+	
 }

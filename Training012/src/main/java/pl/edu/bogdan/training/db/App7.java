@@ -18,12 +18,13 @@ public class App7 {
 		
 		em.getTransaction().begin();
 		
-		Query query = em.createQuery("Select u from User u join u.role where name = :name");
+		Query query = em
+				.createQuery("Select user from User user join user.role role where role.name = :name");
 		query.setParameter("name", "ordinary");
 		List<User> users = query.getResultList();
 		
 		for (User user : users) {
-			System.out.println(user.getFirstName());
+			System.out.println(user.getFirstName() + "   " + user.getRole().getName());
 		}
 		
 		em.getTransaction().commit();

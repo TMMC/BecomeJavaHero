@@ -8,7 +8,8 @@ import pl.edu.bogdan.training.db.entity.User;
 
 public class App2 {
 	public static void main(String[] args) {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("pl.edu.bogdan.training.db.entity");
+		EntityManagerFactory entityManagerFactory 
+		= Persistence.createEntityManagerFactory("pl.edu.bogdan.training.db.entity");
 		EntityManager em = entityManagerFactory.createEntityManager();
 		
 		em.getTransaction().begin();
