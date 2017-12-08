@@ -3,6 +3,7 @@ package pl.edu.bogdan.training.db.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,7 +15,8 @@ public class Book {
 	private int id;
 	@Column(name="tytul")
 	private String title;
-	@ManyToOne
+	@ManyToOne(targetEntity=Author.class)
+	@JoinColumn(name="id_autor")
 	private Author author;
 	public int getId() {
 		return id;
@@ -41,5 +43,9 @@ public class Book {
 		this.author = author;
 	}
 	public Book() {}
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + "]";
+	}
 	
 }

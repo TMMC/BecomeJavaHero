@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -46,6 +47,13 @@ public class Greeter {
 	@RequestMapping("/books/all")
 	public String getAllBooks(Model model) {
 		List<Book> books = bookService.getAllBooks();
+		model.addAttribute("books", books);
+		return "all_books";
+	}
+	
+	@RequestMapping("/books/{authorId}")
+	public String getAllBooks(@PathVariable(name="authorId") int authorId, Model model) {
+		List<Book> books = bookService.getBooksOfAuthorWithId(authorId);
 		model.addAttribute("books", books);
 		return "all_books";
 	}

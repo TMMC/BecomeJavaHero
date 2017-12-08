@@ -1,8 +1,12 @@
 package pl.edu.bogdan.training.db.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Table(name="autorzy", schema="public")
@@ -15,6 +19,8 @@ public class Author {
 	private String firstName;
 	@Column(name="nazwisko")
 	private String lastName;
+	@OneToMany(targetEntity = Book.class, mappedBy="author", fetch=FetchType.LAZY)
+	private List<Book> books;
 	public Author() {
 		
 	}
@@ -41,6 +47,12 @@ public class Author {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public List<Book> getBooks() {
+		return books;
+	}
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 	@Override
 	public String toString() {
