@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.edu.bogdan.training.db.IAuthorService;
 import pl.edu.bogdan.training.db.IBookService;
+import pl.edu.bogdan.training.db.ICategoryService;
 import pl.edu.bogdan.training.db.entity.Author;
 import pl.edu.bogdan.training.db.entity.Book;
+import pl.edu.bogdan.training.db.entity.Category;
 
 
 @Controller
@@ -20,6 +22,7 @@ public class Greeter {
 	
 	IAuthorService authorService;
 	IBookService bookService;
+	ICategoryService categoriesService;
 	
 	@Autowired
 	public void setAuthorService(IAuthorService authorService) {
@@ -29,6 +32,11 @@ public class Greeter {
 	@Autowired
 	public void setBookService(IBookService bookService) {
 		this.bookService = bookService;
+	}
+
+	@Autowired
+	public void setCategoriesService(ICategoryService categoriesService) {
+		this.categoriesService = categoriesService;
 	}
 
 	@RequestMapping("/greeting")
@@ -67,5 +75,18 @@ public class Greeter {
 		authorService.addAuthor(author);
 		model.addAttribute("author", author);
 		return "author_added";
+	}
+	
+	@RequestMapping("/categories/all")
+	public String getCategories(Model model) {
+		model.addAttribute("categories", categoriesService.getAllCategories());
+		return "all_categories";
+	}
+	
+	@RequestMapping("/books/bycategory")
+	public String getBooksByCategoryId(@RequestParam(name="categoryId") int categoryId, Model model) {
+		Category category = categoriesService.getCategoryById(categoryId);
+		model.addAttribute("books", category.getBooks());
+		return "all_books";
 	}
 }

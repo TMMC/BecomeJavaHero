@@ -18,6 +18,9 @@ public class Book {
 	@ManyToOne(targetEntity=Author.class)
 	@JoinColumn(name="id_autor")
 	private Author author;
+	@ManyToOne(targetEntity=Category.class)
+	@JoinColumn(name="id_kategoria")
+	private Category category;
 	public int getId() {
 		return id;
 	}
@@ -35,6 +38,12 @@ public class Book {
 	}
 	public void setAuthor(Author author) {
 		this.author = author;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	public Book(int id, String title, Author author) {
 		super();
