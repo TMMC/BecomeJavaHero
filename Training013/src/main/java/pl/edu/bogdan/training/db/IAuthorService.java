@@ -6,4 +6,5 @@ import pl.edu.bogdan.training.db.entity.Author;
 
 public interface IAuthorService {
 	List<Author> getAllAuthors();
+	void addAuthor(Author author);
 }

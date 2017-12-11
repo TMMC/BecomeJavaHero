@@ -24,4 +24,13 @@ public class JPAAuthorService implements IAuthorService {
 		return query.getResultList();
 	}
 
+	@Override
+	public void addAuthor(Author author) {
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("pl.edu.bogdan.training.db.entity");
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(author);
+		em.getTransaction().commit();
+	}
+
 }

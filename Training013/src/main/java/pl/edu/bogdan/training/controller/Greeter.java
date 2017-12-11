@@ -57,4 +57,15 @@ public class Greeter {
 		model.addAttribute("books", books);
 		return "all_books";
 	}
+	
+	@RequestMapping("/author/add")
+	public String addUser(@RequestParam(name="firstName")String firstName, 
+						  @RequestParam(name="lastName") String lastName, Model model) {
+		Author author = new Author();
+		author.setFirstName(firstName);
+		author.setLastName(lastName);
+		authorService.addAuthor(author);
+		model.addAttribute("author", author);
+		return "author_added";
+	}
 }
