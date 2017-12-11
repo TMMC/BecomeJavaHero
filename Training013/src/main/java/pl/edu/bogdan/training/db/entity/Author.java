@@ -16,7 +16,14 @@ import javax.persistence.Table;
 public class Author {
 	@Id
 	@Column(name="id_autor")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	/*
+	 * To zadziała jeżeli najpierw zmienimy bazę danych:
+	 * CREATE SEQUENCE id_autor_seq;
+	 * ALTER TABLE autorzy alter id_autor set default nextval('id_autor_seq');
+	 * SELECT setval('id_autor_seq', mx.mx) from (SELECT MAX(id_autor) as mx from autorzy) mx;
+	 */
 	@Column(name="imie")
 	private String firstName;
 	@Column(name="nazwisko")

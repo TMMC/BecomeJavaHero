@@ -29,9 +29,9 @@ public class JPAAuthorService implements IAuthorService {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("pl.edu.bogdan.training.db.entity");
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("SELECT Max(a.id) FROM Author a");
-		Integer i = (Integer) query.getSingleResult();
-		author.setId(i+1);
+//		Query query = em.createQuery("SELECT Max(a.id) FROM Author a");
+//		Integer i = (Integer) query.getSingleResult();
+//		author.setId(i+1);
 		em.persist(author);
 		em.getTransaction().commit();
 	}
