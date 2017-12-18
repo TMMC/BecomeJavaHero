@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>JSF Tutorial!</title>
+</head>
+
+<body>
+<h2>#{bookService.categoryId}</h2>
+	<h:dataTable value="#{bookService.booksByCategory}" var="book">
+		<h:column>
+			<f:facet name="header">Title</f:facet>    				
+      #{book.title}
+   </h:column>
+		<h:column>
+			<f:facet name="header">Category</f:facet>    				
+      #{book.category.name}
+   </h:column>
+	</h:dataTable>
+
+
+
+</body>
+</html>

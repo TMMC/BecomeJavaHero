@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>JSF Tutorial!</title>
+</head>
+
+<body>
+
+	<h:form>
+		<h:selectOneMenu value="#{bookService.categoryId}">
+		<f:selectItems  value="#{categoryService.allCategories}" var="category"
+		itemLabel="#{category.name}" itemValue="#{category.id}"/>
+		</h:selectOneMenu>
+		<h:commandButton action="books_category" value="Select"/>
+	</h:form>
+
+
+
+</body>
+</html>
