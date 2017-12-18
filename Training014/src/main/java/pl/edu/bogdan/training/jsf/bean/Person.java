@@ -1,14 +1,17 @@
 package pl.edu.bogdan.training.jsf.bean;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-@ManagedBean(name = "person", eager = true)
-@RequestScoped
-public class Person {
+//@ManagedBean(name = "person", eager = true)
+//@RequestScoped
+public class Person implements Serializable {
 	private String firstName;
 	private String lastName;
 	private int age;
+	private boolean canEdit;
 	public String getFirstName() {
 		return firstName;
 	}
@@ -26,6 +29,12 @@ public class Person {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	public boolean isCanEdit() {
+		return canEdit;
+	}
+	public void setCanEdit(boolean canEdit) {
+		this.canEdit = canEdit;
 	}
 	public String action() {
 		firstName = firstName.toUpperCase();

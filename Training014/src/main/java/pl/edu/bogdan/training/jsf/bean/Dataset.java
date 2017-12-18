@@ -26,5 +26,18 @@ public class Dataset {
 		this.persons = persons;
 	}
 	
+	public String startEditing(Person person) {
+		person.setCanEdit(true);
+		return "persons_table";
+	}
 	
+	public String stopEditing(Person person) {
+		person.setCanEdit(false);
+		return "persons_table";
+	}
+	
+	public String test(Person person) {
+		return "persons_table";
+	}
+		
 }

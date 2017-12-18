@@ -23,6 +23,13 @@
 			<f:facet name="header">Age</f:facet>    				
       #{person.age}
    </h:column>
+   <h:column>
+			<f:facet name="header">Edit</f:facet>
+			<h:form>    				
+      <h:commandButton action="#{dataset.startEditing(person)}" rendered="#{not person.canEdit}" value="Start editing" />
+      <h:commandButton action="#{dataset.stopEditing(person)}" rendered="#{person.canEdit}" value="Stop editing" />
+      </h:form>
+   </h:column>
 	</h:dataTable>
 
 
