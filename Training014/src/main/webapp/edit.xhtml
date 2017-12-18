@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+   <head>
+      <title>JSF Tutorial!</title>
+   </head>
+   
+   <body>
+   
+   <h:form>
+   		<h:outputText value="#{editableMessage.message}" rendered="#{not editableMessage.canEdit}"/>
+   		<h:inputText value="#{editableMessage.message}" rendered="#{editableMessage.canEdit}"/>
+   		<h:commandButton action="#{editableMessage.startEditing}" rendered="#{not editableMessage.canEdit}" value="Edit"/>
+   		<h:commandButton action="#{editableMessage.stopEditing}" rendered="#{editableMessage.canEdit}" value="Save"/>
+   </h:form>
+   
+   
+   </body>
+</html>
