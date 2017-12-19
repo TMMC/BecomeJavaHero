@@ -15,8 +15,14 @@
 		<h:inputText id="hahaha" value="#{person.firstName}" />
 		<h:inputText value="#{person.lastName}" />
 		<h:inputText value="#{person.age}" />
+		<h:selectOneMenu id="sel" value="#{person.category}" converter="#{categoryConverter}">
+			<f:selectItems value="#{categoryService.allCategories}"
+				var="category" itemLabel="#{category.name}"
+				itemValue="#{category}" />
+		</h:selectOneMenu>
 		<h:commandButton action="person_page" value="Submit1" />
 		<h:commandButton action="#{person.action}" value="Submit2" />
+		<h:message for="sel"/>
 	</h:form>
 
 

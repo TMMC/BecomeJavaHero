@@ -1,8 +1,10 @@
 package pl.edu.bogdan.training.jsf.bean;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name="editableMessage", eager=true)
+@SessionScoped
 public class EditableMessage {
 	private String message="Hello, world!!!";
 	private boolean canEdit = false;

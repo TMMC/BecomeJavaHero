@@ -12,8 +12,8 @@
 
 	<h:form>
 		<h:selectOneMenu value="#{bookService.categoryId}">
-		<f:selectItems  value="#{categoryService.allCategories}" var="category"
-		itemLabel="#{category.name}" itemValue="#{category.id}"/>
+			<f:selectItems  value="#{categoryService.allCategories}" var="category"
+							itemLabel="#{category.name}" itemValue="#{category.id}"/>
 		</h:selectOneMenu>
 		<h:commandButton action="books_category" value="Select"/>
 	</h:form>

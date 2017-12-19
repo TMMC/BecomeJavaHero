@@ -45,6 +45,7 @@ public class JPABookService implements IBookService {
 
 
 	private String categoryId;
+	private Category category;
 	
 	public String getCategoryId() {
 		return categoryId;
@@ -52,6 +53,16 @@ public class JPABookService implements IBookService {
 
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
+	}
+	
+	
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public List<Book> getBooksByCategory() {

@@ -12,8 +12,9 @@
 
 	<h:dataTable value="#{dataset.persons}" var="person">
 		<h:column>
-			<f:facet name="header">First Name</f:facet>    				
-      #{person.firstName}
+			<f:facet name="header">First Name</f:facet>
+			<h:inputText value="#{person.firstName}" rendered="#{person.canEdit}"/>    				
+      		<h:outputText value="#{person.firstName}" rendered="#{not person.canEdit}"/>
    </h:column>
 		<h:column>
 			<f:facet name="header">Last Name</f:facet>    				

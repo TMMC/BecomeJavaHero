@@ -3,6 +3,8 @@ package pl.edu.bogdan.training.jsf.db;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -13,6 +15,8 @@ import pl.edu.bogdan.training.jsf.db.entity.Author;
 
 
 @ManagedBean(name="authorService", eager=true)
+//@SessionScoped
+@RequestScoped
 public class JPAAuthorService implements IAuthorService {
 
 	public List<Author> getAllAuthors() {
