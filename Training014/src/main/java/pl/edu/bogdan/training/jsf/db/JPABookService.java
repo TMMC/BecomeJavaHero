@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,6 +16,7 @@ import pl.edu.bogdan.training.jsf.db.entity.Book;
 import pl.edu.bogdan.training.jsf.db.entity.Category;
 
 @ManagedBean(name="bookService", eager=true)
+@SessionScoped
 public class JPABookService implements IBookService {
 
 	@Override
@@ -74,5 +76,14 @@ public class JPABookService implements IBookService {
 		Category category = em.find(Category.class, Integer.parseInt(categoryId));
 		return category.getBooks();
 	}
+
+	@Override
+	public String addBook(Book book) {
+		System.out.println("Adding book:");
+		System.out.println(book);
+		return "display_book";
+	}
+	
+	
 
 }

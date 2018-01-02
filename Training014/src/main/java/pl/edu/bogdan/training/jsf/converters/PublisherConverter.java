@@ -9,34 +9,36 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
 import pl.edu.bogdan.training.jsf.db.JPACategoryService;
+import pl.edu.bogdan.training.jsf.db.JPAPublisherService;
 import pl.edu.bogdan.training.jsf.db.entity.Category;
+import pl.edu.bogdan.training.jsf.db.entity.Publisher;
 
-@ManagedBean(name="categoryConverter")
+@ManagedBean(name="publisherConverter")
 @SessionScoped
-public class CategoryConverter implements Converter {
+public class PublisherConverter implements Converter {
 
-	@ManagedProperty(value="#{categoryService}")
-	private JPACategoryService categoryService;
+	@ManagedProperty(value="#{publisherService}")
+	private JPAPublisherService publisherService;
 	
-	public JPACategoryService getCategoryService() {
-		return categoryService;
+
+	public JPAPublisherService getPublisherService() {
+		return publisherService;
 	}
 
-	public void setCategoryService(JPACategoryService categoryService) {
-		this.categoryService = categoryService;
+	public void setPublisherService(JPAPublisherService publisherService) {
+		this.publisherService = publisherService;
 	}
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		int id = Integer.parseInt(value);
-		Category category = categoryService.getCategoryById(id); 
-		System.out.println(category.toString());
-		return category;
+		Publisher publisher = publisherService.getPublisherById(id);
+		return publisher;
 	}
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		int id = ((Category)value).getId();
+		int id = ((Publisher)value).getId();
 		return String.valueOf(id);
 	}
 }

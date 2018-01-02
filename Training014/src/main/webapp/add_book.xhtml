@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>JSF Tutorial!</title>
+</head>
+
+<body>
+
+	<h:form id="book">
+		<label for="book:title">Tytuł: </label>
+		<h:inputText id="title" value="#{book.title}"/>
+		<br></br>
+		<label for="book:description">Opis: </label>
+		<h:inputTextarea id="description" value="#{book.description}"/>
+		<br></br>
+		<label for="book:author">Autor: </label>
+		<h:selectOneMenu id="author" value="#{book.author}" 
+						 converter="#{authorConverter}">
+			<f:selectItems value="#{authorService.allAuthors}"
+						 var="author" 
+						 itemLabel="#{author.firstName} #{author.lastName}"
+						 itemValue="#{author}"/>
+		</h:selectOneMenu>
+		<br></br>
+		<label for="book:category">Kategoria: </label>
+		<h:selectOneMenu id="category" value="#{book.category}" 
+						 converter="#{categoryConverter}">
+			<f:selectItems value="#{categoryService.allCategories}"
+						 var="category" 
+						 itemLabel="#{category.name}"
+						 itemValue="#{category}"/>
+		</h:selectOneMenu>
+		<br></br>
+		<label for="book:publisher">Wydawnictwo: </label>
+		<h:selectOneMenu id="publisher" value="#{book.publisher}" 
+						 converter="#{publisherConverter}">
+			<f:selectItems value="#{publisherService.allPublishers}"
+						 var="publisher" 
+						 itemLabel="#{publisher.name}"
+						 itemValue="#{publisher}"/>
+		</h:selectOneMenu>
+		<br></br>
+		<label for="book:isbn">ISBN: </label>
+		<h:inputText id="isbn" value="#{book.isbn}"/>
+		<br></br>
+		<label for="book:year">Rok wydania: </label>
+		<h:inputText id="year" value="#{book.year}"/>
+		<br></br>
+		<h:commandButton action="#{bookService.addBook(book)}" value="Zapisz książkę"/>
+	</h:form>
+
+
+
+</body>
+</html>

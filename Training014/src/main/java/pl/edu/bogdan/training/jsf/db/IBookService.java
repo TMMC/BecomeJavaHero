@@ -7,4 +7,5 @@ import pl.edu.bogdan.training.jsf.db.entity.Book;
 public interface IBookService {
 	List<Book> getAllBooks();
 	List<Book> getBooksOfAuthorWithId(int id);
+	String addBook(Book book);
 }

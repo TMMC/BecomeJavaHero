@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>JSF Tutorial!</title>
+</head>
+
+<body>
+
+	<h:dataTable value="#{bookService.allBooks}" var="book">
+		<h:column>
+			<f:facet name="header">Title</f:facet>    				
+      #{book.title}
+   </h:column>
+		<h:column>
+			<f:facet name="header">Descritpion</f:facet>    				
+      #{book.description}
+   </h:column>
+   <h:column>
+   		<f:facet name="header">Author</f:facet>
+  		#{book.author.firstName} #{book.author.lastName}
+   </h:column>
+   <h:column>
+   		<f:facet name="header">Genre</f:facet>
+   		#{book.category.name}
+   </h:column>
+   <h:column>
+   		<f:facet name="header">Publisher</f:facet>
+   		#{book.publisher.name}
+   </h:column>
+   <h:column>
+   		<f:facet name="header">ISBN</f:facet>
+   		#{book.isbn}
+   </h:column>
+   <h:column>
+   		<f:facet name="header">Year</f:facet>
+   		#{book.year}
+   </h:column>
+	</h:dataTable>
+
+
+
+</body>
+</html>
