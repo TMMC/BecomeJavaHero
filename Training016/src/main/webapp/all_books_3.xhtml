@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>All books</title>
+	<h:outputStylesheet library="css" name="css/styles.css"/>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:dataTable value="#{dataset.allBooks}" var="book" editable="true" paginator="true" rows="10">
+			<f:facet name="header">List of books</f:facet>
+			<p:column headerText="Title">
+				<p:cellEditor>
+					<f:facet name="output"><h:outputText value="#{book.title}"/></f:facet>
+					<f:facet name="input"><h:inputText value="#{book.title}"/></f:facet>
+				</p:cellEditor> 				
+	   		</p:column>
+	   		<p:column>
+	   			<p:rowEditor />
+	   		</p:column>
+		</p:dataTable>
+	</h:form>
+
+
+</h:body>
+</html>
