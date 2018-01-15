@@ -1,20 +1,15 @@
-package pl.edu.bogdan.training.jsf.db.entity;
+package pl.edu.bogdan.training.prime.faces.db.entities;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="ksiazki", schema="public")
-@ManagedBean(name="book", eager=true)
-@RequestScoped
-public class Book {
+public class BookEntity {
 	@Id
 	@Column(name="id_ksiazka")
 	private int id;
@@ -22,17 +17,17 @@ public class Book {
 	@Column(name="tytul")
 	private String title;
 	
-	@ManyToOne(targetEntity=Author.class)
+	@ManyToOne(targetEntity=AuthorEntity.class)
 	@JoinColumn(name="id_autor")
-	private Author author;
+	private AuthorEntity author;
 	
-	@ManyToOne(targetEntity=Category.class)
+	@ManyToOne(targetEntity=CategoryEntity.class)
 	@JoinColumn(name="id_kategoria")
-	private Category category;
+	private CategoryEntity category;
 	
-	@ManyToOne(targetEntity=Publisher.class)
+	@ManyToOne(targetEntity=PublisherEntity.class)
 	@JoinColumn(name="id_wydawnictwo")
-	private Publisher publisher;
+	private PublisherEntity publisher;
 	
 	@Column(name="isbn")
 	private String isbn;
@@ -42,9 +37,6 @@ public class Book {
 	
 	@Column(name="rok_wydania")
 	private int year;
-	
-	@Transient
-	private boolean canEdit;
 	
 	public int getId() {
 		return id;
@@ -58,22 +50,22 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Author getAuthor() {
+	public AuthorEntity getAuthor() {
 		return author;
 	}
-	public void setAuthor(Author author) {
+	public void setAuthor(AuthorEntity author) {
 		this.author = author;
 	}
-	public Category getCategory() {
+	public CategoryEntity getCategory() {
 		return category;
 	}
-	public void setCategory(Category category) {
+	public void setCategory(CategoryEntity category) {
 		this.category = category;
 	}
-	public Publisher getPublisher() {
+	public PublisherEntity getPublisher() {
 		return publisher;
 	}
-	public void setPublisher(Publisher publisher) {
+	public void setPublisher(PublisherEntity publisher) {
 		this.publisher = publisher;
 	}
 	public String getIsbn() {
@@ -94,20 +86,19 @@ public class Book {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	
-	public boolean isCanEdit() {
-		return canEdit;
-	}
-	public void setCanEdit(boolean canEdit) {
-		this.canEdit = canEdit;
-	}
-	public Book(int id, String title, Author author) {
+	public BookEntity(int id, String title, AuthorEntity author, CategoryEntity category, PublisherEntity publisher,
+			String isbn, String description, int year) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.author = author;
+		this.category = category;
+		this.publisher = publisher;
+		this.isbn = isbn;
+		this.description = description;
+		this.year = year;
 	}
-	public Book() {}
+	public BookEntity() {}
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + "]";

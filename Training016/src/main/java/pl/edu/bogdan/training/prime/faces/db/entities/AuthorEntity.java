@@ -1,6 +1,5 @@
-package pl.edu.bogdan.training.jsf.db.entity;
+package pl.edu.bogdan.training.prime.faces.db.entities;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,27 +13,25 @@ import javax.persistence.Table;
 
 @Table(name="autorzy", schema="public")
 @Entity
-public class Author {
+public class AuthorEntity {
 	@Id
 	@Column(name="id_autor")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	/*
-	 * To zadziała jeżeli najpierw zmienimy bazę danych:
-	 * CREATE SEQUENCE id_autor_seq;
-	 * ALTER TABLE autorzy alter id_autor set default nextval('id_autor_seq');
-	 * SELECT setval('id_autor_seq', mx.mx) from (SELECT MAX(id_autor) as mx from autorzy) mx;
-	 */
+
 	@Column(name="imie")
 	private String firstName;
+	
 	@Column(name="nazwisko")
 	private String lastName;
-	@OneToMany(targetEntity = Book.class, mappedBy="author", fetch=FetchType.LAZY)
-	private List<Book> books;
-	public Author() {
+	
+	@OneToMany(targetEntity = BookEntity.class, mappedBy="author", fetch=FetchType.LAZY)
+	private List<BookEntity> books;
+	
+	public AuthorEntity() {
 		
 	}
-	public Author(int id, String firstName, String lastName) {
+	public AuthorEntity(int id, String firstName, String lastName) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -58,10 +55,10 @@ public class Author {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public List<Book> getBooks() {
+	public List<BookEntity> getBooks() {
 		return books;
 	}
-	public void setBooks(List<Book> books) {
+	public void setBooks(List<BookEntity> books) {
 		this.books = books;
 	}
 	@Override
@@ -85,7 +82,7 @@ public class Author {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Author other = (Author) obj;
+		AuthorEntity other = (AuthorEntity) obj;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;

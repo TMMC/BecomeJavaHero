@@ -29,6 +29,7 @@
 		<label for="book:category">Kategoria: </label>
 		<h:selectOneMenu id="category" value="#{book.category}" 
 						 converter="#{categoryConverter}">
+			<f:selectItem itemLabel="Wybierz kategorię" itemValue="-1"/>
 			<f:selectItems value="#{categoryService.allCategories}"
 						 var="category" 
 						 itemLabel="#{category.name}"

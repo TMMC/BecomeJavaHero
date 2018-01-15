@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>All books</title>
+	<h:outputStylesheet library="css" name="css/styles.css"/>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:dataTable value="#{dataset.allBooks}" var="book" styleClass="table" headerCalss="header" rowClasses="oddRow,evenRow">
+			<h:column>
+				<f:facet name="header">Title</f:facet>    				
+	      		<h:outputText value="#{book.title}" rendered="#{not book.editable}"/>
+	      		<h:inputText value="#{book.title}" rendered="#{book.editable}"/>
+	   		</h:column>
+			<h:column>
+				<f:facet name="header">Descritpion</f:facet>   
+				<h:outputText value="#{book.description}" rendered="#{not book.editable}"/>
+	      		<h:inputText value="#{book.description}" rendered="#{book.editable}"/> 				
+	   		</h:column>
+	   		<h:column>
+	   			<f:facet name="header">Author</f:facet>
+	   			<h:outputText value="#{book.author.firstName} #{book.author.lastName}" rendered="#{not book.editable}"/>
+	  			<h:selectOneMenu value="#{book.author}" converter="#{authorConverter}" rendered="#{book.editable}">
+	  				<f:selectItems value="#{dataset.allAuthors}" var="author"
+	   							itemLabel="#{author.firstName} #{author.lastName}" itemValue="#{author}"/>
+	  			</h:selectOneMenu>
+	   		</h:column>
+	   		<h:column>
+	   			<f:facet name="header">Genre</f:facet>
+	   			<h:outputText value="#{book.category.name}" rendered="#{not book.editable}"/>
+	   			<h:selectOneMenu value="#{book.category}" converter="#{categoryConverter}" rendered="#{book.editable}">
+	   				<f:selectItems value="#{dataset.allCategories}" var="category"
+	   							itemLabel="#{category.name}" itemValue="#{category}"/>
+	   			</h:selectOneMenu>
+	   		</h:column>
+	   		<h:column>
+	   			<f:facet name="header">Publisher</f:facet>
+	   			<h:outputText value="#{book.publisher.name}" rendered="#{not book.editable}"/>
+	   			<h:selectOneMenu value="#{book.publisher}" converter="#{publisherConverter}" rendered="#{book.editable}">
+	   				<f:selectItems value="#{dataset.allPublishers}" var="publisher" itemLabel="#{publisher.name}" itemValue="#{publisher}"/>
+	   			</h:selectOneMenu>
+	   		</h:column>
+	   		<h:column>
+	   			<f:facet name="header">ISBN</f:facet>
+	   			<h:outputText value="#{book.isbn}" rendered="#{not book.editable}"/>
+	      		<h:inputText value="#{book.isbn}" rendered="#{book.editable}"/>
+	   		</h:column>
+	   		<h:column>
+	   			<f:facet name="header">Year</f:facet>
+	   			<h:outputText value="#{book.year}" rendered="#{not book.editable}"/>
+	      		<h:inputText value="#{book.year}" rendered="#{book.editable}"/>
+	   		</h:column>
+	   		<h:column>
+	   			<f:facet name="header">Manage</f:facet>
+		   			<h:commandButton value="Edit" rendered="#{not book.editable}" action="#{dataset.startEditing(book)}"/>
+		   			<h:commandButton value="Save" rendered="#{book.editable}" action="#{dataset.stopEditing(book)}"/>
+	   		</h:column>
+		</h:dataTable>
+	</h:form>
+
+
+
+</h:body>
+</html>

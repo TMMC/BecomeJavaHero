@@ -28,11 +28,13 @@ public class Dataset {
 	
 	public String startEditing(Person person) {
 		person.setCanEdit(true);
+		System.out.println(person);
 		return "persons_table";
 	}
 	
 	public String stopEditing(Person person) {
 		person.setCanEdit(false);
+		System.out.println(person);
 		return "persons_table";
 	}
 	
