@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+	<h:form>
 	<h:dataTable value="#{dataset.persons}" var="person">
 		<h:column>
 			<f:facet name="header">First Name</f:facet>
@@ -26,13 +26,11 @@
    </h:column>
    <h:column>
 			<f:facet name="header">Edit</f:facet>
-			<h:form>    				
       <h:commandButton action="#{dataset.startEditing(person)}" rendered="#{not person.canEdit}" value="Start editing" />
       <h:commandButton action="#{dataset.stopEditing(person)}" rendered="#{person.canEdit}" value="Stop editing" />
-      </h:form>
    </h:column>
 	</h:dataTable>
-
+</h:form>
 
 
 </body>
