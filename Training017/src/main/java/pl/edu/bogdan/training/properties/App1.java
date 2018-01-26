@@ -2,6 +2,7 @@ package pl.edu.bogdan.training.properties;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -13,5 +14,8 @@ public class App1 {
 		System.out.println(p1.getProperty("property2", "default value"));
 		System.out.println(p1.getProperty("property3", "default value"));
 		System.out.println(p1.getProperty("property3"));
+		p1.setProperty("property3", "hahahahaha");
+		System.out.println(p1.getProperty("property3"));
+		p1.store(new FileOutputStream("src/main/resources/example1.properties"), "Jakiś komentarz");
 	}
 }
