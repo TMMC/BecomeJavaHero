@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="user_types")
-public class UserType {
+public class UserTypeEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
@@ -29,6 +29,11 @@ public class UserType {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "UserType [id=" + id + ", name=" + name + "]";
 	}
 	
 	
