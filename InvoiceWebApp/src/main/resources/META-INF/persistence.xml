@@ -4,11 +4,8 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
 http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	
-	<persistence-unit name="invoice"
-		transaction-type="RESOURCE_LOCAL">
-
+	<persistence-unit name="production" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>pl.edu.bogdan.training.invoice.database.entities.UserType</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/faktury" />
@@ -16,6 +13,17 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
 			<property name="hibernate.connection.username" value="postgres" />
 			<property name="hibernate.connection.password" value="postgres" />
+		</properties>
+	</persistence-unit>
+	
+	<!-- https://stackoverflow.com/questions/3804409/using-hsql-in-memory-database-as-jpa-datasource#3805230  -->
+	<persistence-unit name="testing" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+			<property name="hibernate.connection.url" value="jdbc:hsqldb:mem:invoices" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>
 		</properties>
 	</persistence-unit>
 </persistence>
