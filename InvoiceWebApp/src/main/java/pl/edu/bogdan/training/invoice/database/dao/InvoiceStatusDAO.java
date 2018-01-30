@@ -7,4 +7,6 @@ import pl.edu.bogdan.training.invoice.database.entities.InvoiceStatusEntity;
 public interface InvoiceStatusDAO {
 	List<InvoiceStatusEntity> findAll();
 	List<InvoiceStatusEntity> findById(int id);
+	void persist(InvoiceStatusEntity invoiceStatus);
+	void delete(InvoiceStatusEntity invoiceStatus);
 }

@@ -7,4 +7,6 @@ import pl.edu.bogdan.training.invoice.database.entities.ServiceEntity;
 public interface ServiceDAO {
 	List<ServiceEntity> findAll();
 	List<ServiceEntity> findById(int id);
+	void persist(ServiceEntity service);
+	void delete(ServiceEntity service);
 }

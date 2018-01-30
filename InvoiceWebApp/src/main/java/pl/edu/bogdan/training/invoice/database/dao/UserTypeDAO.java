@@ -7,4 +7,6 @@ import pl.edu.bogdan.training.invoice.database.entities.UserTypeEntity;
 public interface UserTypeDAO {
 	List<UserTypeEntity> findAll();
 	List<UserTypeEntity> findById(int id);
+	void persist(UserTypeEntity userType);
+	void delete(UserTypeEntity userType);
 }

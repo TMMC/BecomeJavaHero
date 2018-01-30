@@ -7,4 +7,6 @@ import pl.edu.bogdan.training.invoice.database.entities.PositionEntity;
 public interface PositionDAO {
 	List<PositionEntity> findAll();
 	List<PositionEntity> findById(int id);
+	void persist(PositionEntity position);
+	void delete(PositionEntity position);
 }
