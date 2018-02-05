@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Invoice Login Page</title>
+</h:head>
+
+<h:body>
+	<h:form id="login_form">
+		<label for="username">Login: </label>
+		<p:inputText id="username"></p:inputText><br></br>
+		<label for="password">Password: </label>
+		<p:password id="password"></p:password><br></br>
+		<p:commandButton id="submit" value="Log in" action="after_login"/>
+	</h:form>
+
+
+</h:body>
+</html>
