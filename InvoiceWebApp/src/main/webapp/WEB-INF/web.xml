@@ -3,11 +3,6 @@
                         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 
-	<context-param>
-		<param-name>primefaces.THEME</param-name>
-		<param-value>omega</param-value>
-	</context-param>
-
 	<display-name>JSF application</display-name>
 	<welcome-file-list>
 		<welcome-file>faces/home.xhtml</welcome-file>

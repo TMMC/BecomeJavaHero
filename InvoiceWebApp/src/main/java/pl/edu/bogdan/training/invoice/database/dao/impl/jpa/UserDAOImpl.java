@@ -8,8 +8,11 @@ import javax.persistence.TypedQuery;
 import pl.edu.bogdan.training.invoice.database.dao.UserDAO;
 import pl.edu.bogdan.training.invoice.database.entities.UserEntity;
 
+@ManagedBean(name="userDao")
+@SessionScoped
 public class UserDAOImpl implements UserDAO {
 
+	@ManagedProperty(value="#{connector}")
 	private DatabaseConnector databaseConnector;
 
 	public List<UserEntity> findAll() {
@@ -82,6 +85,27 @@ public class UserDAOImpl implements UserDAO {
 
 	public void setDatabaseConnector(DatabaseConnector databaseConnector) {
 		this.databaseConnector = databaseConnector;
+	}
+
+	@Override
+	public List<UserEntity> findByUsername(String username) {
+		EntityManager em = databaseConnector.createEntityManager();
+		List<UserEntity> result = null;
+
+		try {
+			em.getTransaction().begin();
+			TypedQuery<UserEntity> query = em.createQuery("Select a from UserEntity a where a.username = :username",
+					UserEntity.class);
+			query.setParameter("username", username);
+			result = query.getResultList();
+			em.getTransaction().commit();
+		} finally {
+			if (em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			em.close();
+		}
+		return result;
 	}
 
 }

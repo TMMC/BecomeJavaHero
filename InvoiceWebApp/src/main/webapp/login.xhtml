@@ -12,10 +12,10 @@
 <h:body>
 	<h:form id="login_form">
 		<label for="username">Login: </label>
-		<p:inputText id="username"></p:inputText><br></br>
+		<p:inputText id="username" value="#{credential.username}"></p:inputText><br></br>
 		<label for="password">Password: </label>
-		<p:password id="password"></p:password><br></br>
-		<p:commandButton id="submit" value="Log in" action="after_login"/>
+		<p:password id="password" value="#{credential.password}"></p:password><br></br>
+		<p:commandButton id="submit" value="Log in" action="#{credential.login()}"/>
 	</h:form>
 
 
