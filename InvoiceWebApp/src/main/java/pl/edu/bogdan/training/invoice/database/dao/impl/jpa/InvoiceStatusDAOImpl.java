@@ -56,7 +56,11 @@ public class InvoiceStatusDAOImpl implements InvoiceStatusDAO {
 
 		try {
 			em.getTransaction().begin();
-			em.persist(invoiceStatus);
+			if (em.find(InvoiceStatusEntity.class, invoiceStatus.getId()) == null) { 
+				em.persist(invoiceStatus);
+			} else {
+				em.merge(invoiceStatus);
+			}
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {
@@ -71,7 +75,10 @@ public class InvoiceStatusDAOImpl implements InvoiceStatusDAO {
 
 		try {
 			em.getTransaction().begin();
-			em.remove(invoiceStatus);
+			InvoiceStatusEntity entity = em.find(InvoiceStatusEntity.class, invoiceStatus.getId());
+			if (entity != null) {
+				em.remove(entity);
+			}
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {

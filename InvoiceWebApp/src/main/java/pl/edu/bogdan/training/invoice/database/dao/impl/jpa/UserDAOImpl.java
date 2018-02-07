@@ -61,7 +61,12 @@ public class UserDAOImpl implements UserDAO {
 
 		try {
 			em.getTransaction().begin();
-			em.persist(user);
+			if (em.find(UserEntity.class, user.getId()) == null) {
+				em.persist(user);
+			} else {
+				em.merge(user);
+			}
+			
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {
@@ -76,7 +81,10 @@ public class UserDAOImpl implements UserDAO {
 
 		try {
 			em.getTransaction().begin();
-			em.remove(user);
+			UserEntity entity = em.find(UserEntity.class, user.getId());
+			if (entity != null) {
+				em.remove(entity);
+			}
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {

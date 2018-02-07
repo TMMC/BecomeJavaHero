@@ -1,4 +1,4 @@
-package pl.edu.bogdan.training.invoice;
+package pl.edu.bogdan.training.invoice.db;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

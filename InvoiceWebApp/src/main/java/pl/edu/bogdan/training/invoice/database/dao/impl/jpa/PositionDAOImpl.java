@@ -55,7 +55,11 @@ public class PositionDAOImpl implements PositionDAO {
 
 		try {
 			em.getTransaction().begin();
-			em.persist(position);
+			if (em.find(PositionEntity.class, position.getId()) == null) {
+				em.persist(position);
+			} else {
+				em.merge(position);
+			}
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {
@@ -70,7 +74,10 @@ public class PositionDAOImpl implements PositionDAO {
 
 		try {
 			em.getTransaction().begin();
-			em.remove(position);
+			PositionEntity entity = em.find(PositionEntity.class, position.getId());
+			if (entity != null) {
+				em.remove(entity);
+			}
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {

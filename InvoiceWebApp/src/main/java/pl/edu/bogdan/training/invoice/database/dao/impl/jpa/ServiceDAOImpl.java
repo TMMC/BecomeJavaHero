@@ -55,7 +55,11 @@ public class ServiceDAOImpl implements ServiceDAO {
 
 		try {
 			em.getTransaction().begin();
-			em.persist(service);
+			if (em.find(ServiceEntity.class, service.getId()) == null) {
+				em.persist(service);
+			} else {
+				em.merge(service);
+			}
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {
@@ -70,7 +74,10 @@ public class ServiceDAOImpl implements ServiceDAO {
 
 		try {
 			em.getTransaction().begin();
-			em.remove(service);
+			ServiceEntity entity = em.find(ServiceEntity.class, service.getId());
+			if (entity != null) {
+				em.remove(entity);
+			}
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {

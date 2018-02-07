@@ -74,7 +74,12 @@ public class UserTypeDAOImpl implements pl.edu.bogdan.training.invoice.database.
 
 		try {
 			em.getTransaction().begin();
-			em.persist(userType);
+			if (em.find(UserTypeEntity.class, userType.getId()) == null) {
+				em.persist(userType);
+			} else {
+				em.merge(userType);
+			}
+			
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {
@@ -89,7 +94,10 @@ public class UserTypeDAOImpl implements pl.edu.bogdan.training.invoice.database.
 
 		try {
 			em.getTransaction().begin();
-			em.remove(userType);
+			UserTypeEntity type = em.find(UserTypeEntity.class, userType.getId());
+			if (type != null) {
+				em.remove(type);
+			}
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {

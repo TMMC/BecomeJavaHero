@@ -1,4 +1,4 @@
-package pl.edu.bogdan.training.invoice;
+package pl.edu.bogdan.training.invoice.db;
 
 import static org.junit.Assert.*;
 

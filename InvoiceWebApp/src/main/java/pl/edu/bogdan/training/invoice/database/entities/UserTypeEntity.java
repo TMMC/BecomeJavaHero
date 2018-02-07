@@ -3,6 +3,7 @@ package pl.edu.bogdan.training.invoice.database.entities;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ public class UserTypeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-
+	@Column(unique=true)
 	private String name;
 
 	@OneToMany(targetEntity = UserEntity.class, fetch = FetchType.LAZY, mappedBy = "userType", cascade = CascadeType.REMOVE)

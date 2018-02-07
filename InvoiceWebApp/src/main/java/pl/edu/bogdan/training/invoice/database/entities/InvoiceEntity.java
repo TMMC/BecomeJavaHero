@@ -41,7 +41,7 @@ public class InvoiceEntity {
 	@JoinColumn
 	private InvoiceStatusEntity status;
 
-	@OneToMany(targetEntity = PositionEntity.class, fetch = FetchType.LAZY, mappedBy = "invoice", cascade = CascadeType.REMOVE)
+	@OneToMany(targetEntity = PositionEntity.class, fetch = FetchType.EAGER, mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval=true)
 	private List<PositionEntity> positions;
 
 	public int getId() {
@@ -102,7 +102,7 @@ public class InvoiceEntity {
 
 	@Override
 	public String toString() {
-		return "Invoice [id=" + id + ", client=" + client + ", seller=" + seller + ", date=" + date + ", number="
+		return "Invoice [id=" + id + ",\n client=" + client + ",\n seller=" + seller + ",\n date=" + date + ",\n number="
 				+ number + "]";
 	}
 
