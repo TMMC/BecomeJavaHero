@@ -27,6 +27,7 @@ public class LoginService {
 			return false;
 		}
 		UserEntity user = listOfUsers.get(0);
+		System.out.println(user);
 		return user.getPassword().equals(credential.getPassword());
 	}
 }

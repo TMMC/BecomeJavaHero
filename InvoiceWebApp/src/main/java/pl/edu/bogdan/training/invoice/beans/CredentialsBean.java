@@ -43,7 +43,11 @@ public class CredentialsBean {
 		md.update(password.getBytes());
 		Base64.Encoder encoder = Base64.getEncoder();
 		password = encoder.encodeToString(md.digest());
-		
+		if (loginService.isCredentialOk(this)) {
+			System.out.println("PRAWIDŁOWE");
+		} else {
+			System.out.println("ERROR");
+		}
 		return "";
 	}
 }
