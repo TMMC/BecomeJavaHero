@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,6 +22,11 @@ public class ServiceDaoTest {
 		this.databaseConnector = new TestingDatabaseConnector();
 		serviceDao = new ServiceDAOImpl();
 		serviceDao.setDatabaseConnector(databaseConnector);
+	}
+	
+	@After
+	public void clean() {
+		databaseConnector.close();
 	}
 	
 	@Test

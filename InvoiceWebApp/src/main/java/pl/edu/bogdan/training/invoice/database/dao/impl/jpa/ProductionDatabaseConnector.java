@@ -14,4 +14,9 @@ public class ProductionDatabaseConnector implements DatabaseConnector {
 	public EntityManager createEntityManager() {
 		return productionFactory.createEntityManager();
 	}
+
+	@Override
+	public void close() {
+		productionFactory.close();
+	}
 }

@@ -2,14 +2,19 @@ package pl.edu.bogdan.training.invoice.database.dao.impl.jpa;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import pl.edu.bogdan.training.invoice.database.dao.InvoiceDAO;
 import pl.edu.bogdan.training.invoice.database.entities.InvoiceEntity;
 
+@ManagedBean(name="invoiceDao")
+@SessionScoped
 public class InvoiceDAOImpl implements InvoiceDAO {
-
+	@ManagedProperty(value="#{connector}")
 	private DatabaseConnector databaseConnector;
 
 	public List<InvoiceEntity> findAll() {

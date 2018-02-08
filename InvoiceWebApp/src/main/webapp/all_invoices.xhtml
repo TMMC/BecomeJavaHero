@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Invoice Login Page</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:dataTable value="#{dataset.allInvoices}" var="invoice" paginator="true" rows="10">
+			<f:facet name="header">List of invoices</f:facet>
+			<p:column headerText="Invoice number">
+				<h:outputText value="#{invoice.number}"/> 				
+	   		</p:column>
+			<p:column headerText="Seller">
+				<h:outputText value="#{invoice.seller.name}"/>  				
+	   		</p:column>
+	   		<p:column headerText="Client">
+	   			<h:outputText value="#{invoice.client.name}"/>
+	   		</p:column>
+	   		<p:column headerText="Status">
+	   			<h:outputText value="#{invoice.status.name}"/>
+	   		</p:column>
+	   		<p:column headerText="Number of positions">
+	   			<h:outputText value="#{invoice.positions.size()}"/>
+	   		</p:column>
+		</p:dataTable>
+	</h:form>
+
+
+</h:body>
+</html>

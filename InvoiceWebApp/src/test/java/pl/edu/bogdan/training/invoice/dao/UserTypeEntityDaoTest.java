@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.RollbackException;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,6 +23,11 @@ public class UserTypeEntityDaoTest {
 		this.databaseConnector = new TestingDatabaseConnector();
 		this.userTypeDao = new UserTypeDAOImpl();
 		userTypeDao.setDatabaseConnector(databaseConnector);
+	}
+	
+	@After
+	public void clean() {
+		databaseConnector.close();
 	}
 	
 	@Test

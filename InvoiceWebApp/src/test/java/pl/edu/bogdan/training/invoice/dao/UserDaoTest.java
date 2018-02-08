@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.PersistenceException;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,6 +29,11 @@ public class UserDaoTest {
 		userDao.setDatabaseConnector(databaseConnector);
 		this.userTypeDao = new UserTypeDAOImpl();
 		userTypeDao.setDatabaseConnector(databaseConnector);
+	}
+	
+	@After
+	public void clean() {
+		databaseConnector.close();
 	}
 	
 	@Test

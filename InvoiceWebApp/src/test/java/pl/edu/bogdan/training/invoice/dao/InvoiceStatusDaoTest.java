@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.RollbackException;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,6 +24,11 @@ public class InvoiceStatusDaoTest {
 		this.databaseConnector = new TestingDatabaseConnector();
 		this.invoiceStatusDao = new InvoiceStatusDAOImpl();
 		invoiceStatusDao.setDatabaseConnector(databaseConnector);
+	}
+	
+	@After
+	public void clean() {
+		databaseConnector.close();
 	}
 	
 	@Test

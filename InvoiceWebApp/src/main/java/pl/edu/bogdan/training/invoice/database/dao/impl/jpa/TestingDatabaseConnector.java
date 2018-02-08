@@ -10,4 +10,9 @@ public class TestingDatabaseConnector implements DatabaseConnector {
 	public EntityManager createEntityManager() {
 		return testingFactory.createEntityManager();
 	}
+
+	@Override
+	public void close() {
+		testingFactory.close();
+	}
 }
