@@ -21,13 +21,17 @@ public class LoginService {
 		this.userDAO = userDAO;
 	}
 
-	public boolean isCredentialOk(CredentialsBean credential) {
+	public UserEntity isCredentialOk(CredentialsBean credential) {
 		List<UserEntity> listOfUsers = userDAO.findByUsername(credential.getUsername());
 		if (listOfUsers.size() != 1) {
-			return false;
+			return null;
 		}
 		UserEntity user = listOfUsers.get(0);
 		System.out.println(user);
-		return user.getPassword().equals(credential.getPassword());
+		if (user.getPassword().equals(credential.getPassword())) {
+			return user;
+		} else {
+			return null;
+		}
 	}
 }

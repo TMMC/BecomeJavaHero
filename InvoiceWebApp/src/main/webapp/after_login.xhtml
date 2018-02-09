@@ -10,7 +10,14 @@
 </h:head>
 
 <h:body>
-	<h1>You are logged in</h1>
+	<h1>You are logged in as #{credential.user.name}</h1>
+	
+	<p:dataTable value="#{credential.user.boughtInvoices}" var="invoice" paginator="true">
+		<p:column>
+			<f:facet name="header">Invoice number</f:facet>
+			<h:outputText value="#{invoice.number}"/>
+		</p:column>
+	</p:dataTable>
 
 </h:body>
 </html>

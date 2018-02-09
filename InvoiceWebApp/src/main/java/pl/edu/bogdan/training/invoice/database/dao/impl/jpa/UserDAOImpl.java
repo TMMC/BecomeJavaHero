@@ -105,10 +105,17 @@ public class UserDAOImpl implements UserDAO {
 
 		try {
 			em.getTransaction().begin();
-			TypedQuery<UserEntity> query = em.createQuery("Select a from UserEntity a where a.username = :username",
+			TypedQuery<UserEntity> query = em.createQuery("Select distinct a from UserEntity a join fetch a.boughtInvoices inv where a.username = :username",
 					UserEntity.class);
 			query.setParameter("username", username);
 			result = query.getResultList();
+			System.out.println("ILOŚĆ REKORDÓW: " + result.size());
+			for (UserEntity u : result) {
+				System.out.println(u);
+			}
+//			for (UserEntity e : result) {
+//				e.getBoughtInvoices().size();
+//			}
 			em.getTransaction().commit();
 		} finally {
 			if (em.getTransaction().isActive()) {
